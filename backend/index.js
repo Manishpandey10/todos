@@ -2,6 +2,8 @@ import express from "express";
 import {createTodo, updateTodo} from "./types.js"
 import { todo } from "./db.js";
 import cors from "cors"
+
+
 const app = express();
 app.use(express.json());
 app.use(cors())
@@ -18,13 +20,14 @@ app.post("/todo", async function (req, res) {
     res.status(411).json({ msg: `there is something wrong with the todo` });
     return;
   }
-  await todo.create({
+  const newTodo = await todo.create({
     title: createPayload.title,
     description: createPayload.description,
     completed: false
   });
   res.json({
     msg: "todo task added!!!",
+    todo:newTodo
   });
 });
 
@@ -35,6 +38,7 @@ app.get("/todos",  async function (req, res) {
   res.json({
     todo:todos,
   });
+  
 });
 
 

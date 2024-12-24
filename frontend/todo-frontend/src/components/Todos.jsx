@@ -1,12 +1,17 @@
-export function Todos({todos,setTodo}){
-
-    return <div> 
-        {todos.map(function(todo){
-            return <div>
-            <h1>{todo.title}</h1>
-            <h2>{todo.description}</h2>
-            <button>{todo.completed == true ?"completed":"Marked the task as completed"}</button>
-    </div>
+const Todos = ({todos}) => {
+    return (
+      <div>
+        {todos && todos.map(function(todo){
+          return (
+            <div>
+              <h2>{todo.title}</h2>
+              <p>{todo.description}</p>
+              <button>{todo.completed == true ? "Completed" : "Mark as Complete"}</button>
+            </div>
+          )
         })}
-    </div>
-}
+      </div>
+    )
+  }
+  
+export default Todos
