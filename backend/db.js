@@ -1,15 +1,11 @@
-import mongoose from "mongoose"
-// import { boolean } from "zod"
-mongoose.connect("mongodb+srv://admin:admin%4011@cluster0expmanish.izoem.mongodb.net/")//import conncetion url from ENV files
-const todoSchema = mongoose.schema({
-    title:string,
-    description:string,
-    completed:boolean
+import mongoose from 'mongoose';
+// import { boolean, string } from "zod"
+mongoose.connect(
+  "mongodb+srv://admin:admin%4011@cluster0expmanish.izoem.mongodb.net/LocalTesting"
+); //import conncetion url from ENV files
+const todoSchema = new mongoose.Schema({
+    title:String,
+    description:String,
+    completed:Boolean
 })
-
-const todo = mongoose.model('todos',todoSchema)
-
-module.exports= {
-    todo:todo
-}
-
+export const todo = mongoose.model("todos", todoSchema);

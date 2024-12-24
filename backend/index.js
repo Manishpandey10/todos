@@ -1,24 +1,13 @@
 import express from "express";
 import {createTodo, updateTodo} from "./types.js"
 import { todo } from "./db.js";
-// import cors from "cors"
+import cors from "cors"
 const app = express();
 app.use(express.json());
 app.use(cors())
 
 // app.use(port);
-
-
-
-
-app.get("/", async function (req, res) {
-  const todo = await todo.find({});
-  console.log(todo);
-  res.json({
-    todo:[],
-  });
-});
-
+const port = 3200
 
 
 
@@ -38,6 +27,16 @@ app.post("/todo", async function (req, res) {
     msg: "todo task added!!!",
   });
 });
+
+
+app.get("/todos",  async function (req, res) {
+  const todos = await todo.find({});
+  // console.log(todo);
+  res.json({
+    todo:todos,
+  });
+});
+
 
 app.put("/completed", async function (req, res) {
   const updatePayload = req.body;
@@ -59,4 +58,6 @@ app.put("/completed", async function (req, res) {
     }
   )
 });
-app.listen(3200)
+app.listen(port ,()=>{
+  console.log(`app is runnig on the port no: ${port}`)
+})
