@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 
 dotenv.config()
 const mongoUri = process.env.MONGO_URI
+
 mongoose.connect(mongoUri); //import conncetion url from ENV files
 const todoSchema = new mongoose.Schema({
     title:String,
