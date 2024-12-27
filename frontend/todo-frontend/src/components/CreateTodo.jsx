@@ -13,6 +13,7 @@ export default function CreateTodo() {
           const value = e.target.value;
           setTitle(value);
         }}
+
       ></input>
       <input
         id="description"
