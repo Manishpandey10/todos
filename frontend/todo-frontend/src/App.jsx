@@ -12,7 +12,7 @@ function App() {
   return (
     <div>
       <CreateTodo/>
-      <Todos / >
+      <Todos />
     </div>
   )
 }
