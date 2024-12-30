@@ -1,4 +1,4 @@
-export const Todos = () => {
+ const Todos = () => {
 return <div>
   <h1>todo 1</h1>
   <h2>this is description</h2>
@@ -18,3 +18,5 @@ return <div>
   //     </div>
   //   )
   // }
+
+export default Todos
