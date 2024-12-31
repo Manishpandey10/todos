@@ -1,4 +1,5 @@
-// import { useState } from "react";
+import { useState } from "react";
+import { useEffect } from "react";
 import "./App.css";
 import CreateTodo from "./components/CreateTodo";
 import Todos  from './components/Todos'
@@ -23,11 +24,23 @@ function App() {
   //     description: Math.random(),
   //   }]);
   // }
+  const [todos, setTodos]= useState([]);
+
+  useEffect(()=>{
+    const fetchTodos = async ()=>{
+      const res= await fetch('http://localhost:3200/todos')
+      const data = await res.json();
+      console.log(data.todo)  
+      setTodos(data.todo)
+    }
+    fetchTodos()
+
+  },[])
 
   return (
     <div>
       <CreateTodo/>
-      <Todos/>
+      <Todos todos={todos}/>
       {/* <button onClick={addTodo}>Adding a Todo</button>
       {todos.map((todo) => <Todo id={todo.id} title={todo.title} description={todo.description} />)} */}
     </div>
